@@ -5,9 +5,7 @@ name: Maven DEV deploy
 
 on:
   push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+    branches: [ nic/env/dev ]
 
 jobs:
   build:
