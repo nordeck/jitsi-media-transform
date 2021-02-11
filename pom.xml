@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.jitsi</groupId>
@@ -144,9 +145,7 @@
                 <executions>
                     <execution>
                         <id>compile</id>
-                        <goals>
-                            <goal>compile</goal>
-                        </goals>
+                        <goals> <goal>compile</goal> </goals>
                         <configuration>
                             <sourceDirs>
                                 <sourceDir>${project.basedir}/src/main/kotlin</sourceDir>
@@ -156,9 +155,7 @@
                     </execution>
                     <execution>
                         <id>test-compile</id>
-                        <goals>
-                            <goal>test-compile</goal>
-                        </goals>
+                        <goals> <goal>test-compile</goal> </goals>
                         <configuration>
                             <sourceDirs>
                                 <sourceDir>${project.basedir}/src/test/kotlin</sourceDir>
@@ -224,16 +221,12 @@
                     <execution>
                         <id>java-compile</id>
                         <phase>compile</phase>
-                        <goals>
-                            <goal>compile</goal>
-                        </goals>
+                        <goals> <goal>compile</goal> </goals>
                     </execution>
                     <execution>
                         <id>java-test-compile</id>
                         <phase>test-compile</phase>
-                        <goals>
-                            <goal>testCompile</goal>
-                        </goals>
+                        <goals> <goal>testCompile</goal> </goals>
                     </execution>
                 </executions>
                 <configuration>
@@ -262,34 +255,32 @@
                         <configuration>
                             <skip>${ktlint.skip}</skip>
                             <target name="ktlint">
-                                <java taskname="ktlint" dir="${basedir}" fork="true" failonerror="true" classpathref="maven.plugin.classpath" classname="com.pinterest.ktlint.Main">
+                                <java taskname="ktlint" dir="${basedir}" fork="true" failonerror="true"
+                                    classpathref="maven.plugin.classpath" classname="com.pinterest.ktlint.Main">
                                     <arg value="src/**/*.kt"/>
                                     <!-- to generate report in checkstyle format prepend following args: -->
                                     <!-- 
                                     <arg value="[dash][dash]reporter=plain"/>
                                     <arg value="[dash][dash]reporter=checkstyle,output=${project.build.directory}/ktlint.xml"/>
                                     -->
-                                    <!-- see https://github.com/shyiko/ktlint#usage for more -->
+                                    <!-- see https://github.com/shyiko/ktlint#usage for more -->                    
                                 </java>
                             </target>
                         </configuration>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
+                        <goals><goal>run</goal></goals>
                     </execution>
                     <execution>
                         <id>ktlint-format</id>
                         <configuration>
                             <target name="ktlint">
-                                <java taskname="ktlint" dir="${basedir}" fork="true" failonerror="true" classpathref="maven.plugin.classpath" classname="com.pinterest.ktlint.Main">
+                                <java taskname="ktlint" dir="${basedir}" fork="true" failonerror="true"
+                                    classpathref="maven.plugin.classpath" classname="com.pinterest.ktlint.Main">
                                     <arg value="-F"/>
                                     <arg value="src/**/*.kt"/>
                                 </java>
                             </target>
                         </configuration>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
+                        <goals><goal>run</goal></goals>
                     </execution>
                 </executions>
                 <dependencies>
@@ -302,44 +293,42 @@
                 </dependencies>
             </plugin>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>3.1.1</version>
-                <configuration>
-                    <configLocation>checkstyle.xml</configLocation>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>com.github.spotbugs</groupId>
-                <artifactId>spotbugs-maven-plugin</artifactId>
-                <version>4.0.4</version>
-                <configuration>
-                    <excludeFilterFile>spotbugs-exclude.xml</excludeFilterFile>
-                    <includeTests>true</includeTests>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <dependencies>
-                    <dependency>
-                        <groupId>com.github.spotbugs</groupId>
-                        <artifactId>spotbugs</artifactId>
-                        <version>${spotbugs.version}</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-checkstyle-plugin</artifactId>
+              <version>3.1.1</version>
+              <configuration>
+                  <configLocation>checkstyle.xml</configLocation>
+              </configuration>
+              <executions>
+                  <execution>
+                      <goals>
+                          <goal>check</goal>
+                      </goals>
+                  </execution>
+              </executions>
+          </plugin>
+          <plugin>
+              <groupId>com.github.spotbugs</groupId>
+              <artifactId>spotbugs-maven-plugin</artifactId>
+              <version>4.0.4</version>
+              <configuration>
+                  <excludeFilterFile>spotbugs-exclude.xml</excludeFilterFile>
+                  <includeTests>true</includeTests>
+              </configuration>
+              <executions>
+                  <execution>
+                      <phase>verify</phase>
+                      <goals><goal>check</goal></goals>
+                  </execution>
+              </executions>
+              <dependencies>
+                  <dependency>
+                      <groupId>com.github.spotbugs</groupId>
+                      <artifactId>spotbugs</artifactId>
+                      <version>${spotbugs.version}</version>
+                  </dependency>
+              </dependencies>
+          </plugin>
         </plugins>
     </build>
 
@@ -373,13 +362,5 @@
             <url>https://jitpack.io</url>
         </repository>
     </repositories>
-
-    <distributionManagement>
-        <repository>
-            <id>github</id>
-            <name>GitHub Nordeck Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/nordeck/jitsi-media-transform</url>
-        </repository>
-    </distributionManagement>
 
 </project>

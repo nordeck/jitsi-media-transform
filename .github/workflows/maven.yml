@@ -33,4 +33,4 @@ jobs:
     - name: Build with Maven
       run: ./resources/build.sh
     - name: Deploy with Maven
-      run: mvn deploy
+      run: mvn deploy -DaltDeploymentRepository=github::default::https://maven.pkg.github.com/nordeck/jitsi-media-transform
