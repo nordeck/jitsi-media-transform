@@ -30,8 +30,6 @@ jobs:
       with:
         repositories: '[{ "id": "github", "url": "https://maven.pkg.github.com/nordeck/jitsi-media-transform" }]'
         servers: '[{ "id": "github", "username": "${{ github.repository_owner }}", "password": "${{ secrets.GITHUB_TOKEN }}" }]'
-    - name: Build with Maven
-      run: ./resources/build.sh
     - name: Set output vars
       id: vars
       run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
